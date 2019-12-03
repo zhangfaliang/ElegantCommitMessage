@@ -1,5 +1,3 @@
-
-## 如何优雅的提交代码 
 软件开发的小伙伴们，对git 是非常熟不过的，每天应该都会提交代码到自己的 Repositories或者公司私有的 gitlub ，当然也有些小伙伴会使用svn或者其它的提交工具,该文章分享一下如何使用git commit优雅的提交，能够让团队的小伙伴更能够 git review，我会按照以下的目录继续分享配置。
 
 平时提交代码的commit message
@@ -169,7 +167,110 @@ npm install -g commitizen cz-conventional-changelog
 在您的主目录中创建一个.czrc文件，其路径指向首选的，全局安装的commitizen适配器
 
 echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
-你们都准备好了！现在任何git仓库，并使用git cz代替git commit，您会发现commitizen提示。
+你们都准备好了！
+
+git add -A
+yarn commit || npm run commit
+现在任何git仓库，并使用git cz代替git commit，您会发现commitizen提示。修该 执行
+
 
 全局安装搞定  😃（我之前选择的全局安装）。咱们接下啦看看项目中安装
 
+
+
+局部项目中安装 
+
+
+npm install -D commitizen cz-conventional-changelog 
+// package.json t添加
+"scripts": {
+
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+看图配置完成，修该 执行 
+
+
+git add -A
+yarn commit || npm run commit
+
+
+
+
+如何配置commitizen + cz-customizable
+全局配置 commitizen +cz-customizabal
+
+
+npm install -g commitizen cz-customizable
+
+
+在电脑的项目的根目录创建.czrc 然后执行 echo '{ "path": "cz-customizable" }' > ~/.czrc
+
+
+
+
+touch .czrc .cz-config.js
+echo '{ "path": "cz-customizable" }' > ~/.czrc
+vim ~/.cz-config.js
+在cz-config.js中输入一下代码
+
+'use strict';
+
+module.exports = {
+
+  types: [
+    {
+      value: 'WIP',
+      name : '💪  WIP:      Work in progress'
+    },
+    {
+      value: 'feat',
+      name : '✨  feat:     A new feature'
+    },
+    {
+      value: 'fix',
+      name : '🐞  fix:      A bug fix'
+    },
+    {
+      value: 'refactor',
+      name : '🛠  refactor: A code change that neither fixes a bug nor adds a feature'
+    },
+    {
+      value: 'docs',
+      name : '📚  docs:     Documentation only changes'
+    },
+    {
+      value: 'test',
+      name : '🏁  test:     Add missing tests or correcting existing tests'
+    },
+    {
+      value: 'chore',
+      name : '🗯  chore:    Changes that don\'t modify src or test files. Such as updating build tasks, package manager'
+    },
+    {
+      value: 'style',
+      name : '💅  style:    Code Style, Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)'
+    },
+    {
+      value: 'revert',
+      name : '⏪  revert:   Revert to a commit'
+    }
+  ],
+
+  scopes: [],
+
+  allowCustomScopes: true,
+  allowBreakingChanges: ["feat", "fix"]
+};
+
+现在任何git仓库，并使用git cz代替git commit，您会发现commitizen提示。
+
+看图配置完成，修该 执行
+
+git add -A
+git  cz
