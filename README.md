@@ -295,7 +295,6 @@ yarn commit || npm run commit
 看图
 
 
-
 如何配置itmoji-cli
 全局安装
 
