@@ -1,0 +1,21 @@
+{
+  "name": "elegantcommitmessage",
+  "version": "1.0.0",
+  "description": "软件开发的小伙伴们，对git 是非常熟不过的，每天应该都会提交代码到自己的 Repositories或者公司私有的 gitlub ，当然也有些小伙伴会使用svn或者其它的提交工具,该文章分享一下如何使用git commit优雅的提交，能够让团队的小伙伴更能够 git review，我会按照以下的目录继续分享配置。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.0.2"
+  }
+}
