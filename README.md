@@ -167,11 +167,11 @@ npm install -g commitizen cz-conventional-changelog
 在您的主目录中创建一个.czrc文件，其路径指向首选的，全局安装的commitizen适配器
 
 echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
-你们都准备好了！
 
-git add -A
-yarn commit || npm run commit
+
 现在任何git仓库，并使用git cz代替git commit，您会发现commitizen提示。修该 执行
+git add -A
+git cz
 
 
 全局安装搞定  😃（我之前选择的全局安装）。咱们接下啦看看项目中安装
@@ -179,12 +179,9 @@ yarn commit || npm run commit
 
 
 局部项目中安装 
-
-
 npm install -D commitizen cz-conventional-changelog 
 // package.json t添加
-"scripts": {
-
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "git-cz"
   },
@@ -193,9 +190,8 @@ npm install -D commitizen cz-conventional-changelog
       "path": "node_modules/cz-conventional-changelog"
     }
   },
-看图配置完成，修该 执行 
 
-
+ 
 git add -A
 yarn commit || npm run commit
 
@@ -204,8 +200,6 @@ yarn commit || npm run commit
 
 如何配置commitizen + cz-customizable
 全局配置 commitizen +cz-customizabal
-
-
 npm install -g commitizen cz-customizable
 
 
@@ -213,12 +207,9 @@ npm install -g commitizen cz-customizable
 
 
 
-
-touch .czrc .cz-config.js
+touch .czrc .cz-config.js 
 echo '{ "path": "cz-customizable" }' > ~/.czrc
-vim ~/.cz-config.js
-在cz-config.js中输入一下代码
-
+/////在cz-config.js中输入一下代码
 'use strict';
 
 module.exports = {
@@ -274,3 +265,32 @@ module.exports = {
 
 git add -A
 git  cz
+
+
+
+局部项目配置
+npm i -g commitizen
+npm i -D cz-customizable
+
+
+在项目的的package.json中配置  
+
+
+ "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "git-cz"
+  },
+
+"config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  }
+
+
+同时在~/ 或项目目录下创建 .cz-config.js 文件输入的内容与全局.cz-config.js 的一样
+
+git add -A
+yarn commit || npm run commit
+看图
+
